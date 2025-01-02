@@ -122,6 +122,31 @@ installed (see :github:issue:`862` for more details).
 
 .. _inBuildDocs:
 
+
+Testing
+~~~~~~~
+
+MuJoCo's test suite consists of unit tests and integration tests written using the `Google Test <https://google.github.io/googletest/>`_ framework. The tests are built automatically as part of the main CMake build process, but require special consideration when running them.
+
+Tests must be run from the ``test/`` directory in the project root, not from the build directory. This is because many tests rely on relative paths to test resources and fixture files located in the test directory.
+
+To run the tests after building MuJoCo from source:
+
+1. Change to the test directory from project root:
+
+   .. code-block:: Text
+
+      cd test
+
+2. Run the tests using relative paths to the build directory:
+
+   .. code-block:: Text
+
+      ../build/bin/engine_collision_box_test
+      ../build/bin/engine_collision_convex_test
+      # etc...
+
+
 Building the docs
 ~~~~~~~~~~~~~~~~~
 
